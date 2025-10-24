@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dollzz House</title>
+<style>
+html { scroll-behavior: smooth; }
+body, html { margin: 0; padding: 0; font-family: 'Arial', sans-serif; }
+
+/* PAGE D'ACCUEIL */
+#home {
+    position: relative;
+    height: 100vh;
+    background-color: #000;
+    color: #ff00ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+}
+#home h1 {
+    font-size: 4em;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff69b4;
+    margin: 0;
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+#home p {
+    font-size: 1.5em;
+    text-shadow: 0 0 5px #ff00ff;
+    animation: neonGlow 2s ease-in-out infinite alternate;
+}
+#home a {
+    margin-top: 30px;
+    padding: 15px 30px;
+    background-color: #ff00ff;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 0 0 20px #ff00ff;
+}
+#home a:hover { background-color: #ff69b4; box-shadow: 0 0 40px #ff69b4; }
+@keyframes neonGlow {
+    0% { text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff69b4; }
+    100% { text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff69b4; }
+}
+
+/* PAPILLONS */
+.butterfly {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/63/Butterfly_icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: fly 10s linear infinite;
+    transition: transform 1s, opacity 1s;
+    opacity: 0.7;
+}
+@keyframes fly {
+    0% { transform: translate(0,0) rotate(0deg); }
+    25% { transform: translate(100px,50px) rotate(45deg); }
+    50% { transform: translate(-100px,200px) rotate(90deg); }
+    75% { transform: translate(150px,150px) rotate(135deg); }
+    100% { transform: translate(0,0) rotate(360deg); }
+}
+
+/* SITE PRINCIPAL */
+#main { opacity: 0; transition: opacity 1s ease-in-out; position: relative; overflow: hidden; }
+#main.visible { opacity: 1; }
+
+/* Papillons site principal */
+#main .butterfly-main {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/63/Butterfly_icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.5s linear;
+    opacity: 0.6;
+}
+
+/* NAVIGATION */
+nav { display: flex; justify-content: center; background-color: #ff85c1; }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 15px 0;
+    display: block;
+    font-weight: bold;
+    transition: 0.3s;
+}
+nav a:hover { background-color: #ff69b4; box-shadow: 0 0 15px #ff69b4; }
+
+/* GALERIE */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+    background-color: #fbe9f7;
+    padding: 20px 0;
+}
+.gallery img {
+    width: 250px;
+    margin: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+}
+.gallery img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff69b4;
+    filter: brightness(1.2);
+}
+
+/* SECTION MODS */
+#mods { padding: 50px 20px; background-color: #ffe6f0; text-align: center; }
+#mods h2 {
+    margin-bottom: 10px;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff69b4;
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+.mods-container { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
+.mod-card {
+    background: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.mod-card img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.mod-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff69b4;
+}
+.mod-card:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff69b4;
+}
+
+/* CONTACT */
+#contact { text-align:center; padding:50px 20px; }
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ff00ff;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+form input:focus, form textarea:focus {
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff69b4;
+    outline: none;
+}
+form button {
+    padding: 10px 20px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff69b4;
+}
+form button:hover {
+    box-shadow: 0 0 30px #ff00ff, 0 0 60px #ff69b4;
+    transform: scale(1.05);
+}
+
+/* Bouton lien externe */
+.external-button {
+    display:inline-block; 
+    padding:12px 25px; 
+    background-color:#ff69b4; 
+    color:#fff; 
+    text-decoration:none; 
+    border-radius:10px; 
+    box-shadow:0 0 20px #ff00ff; 
+    transition:0.3s;
+}
+.external-button:hover {
+    box-shadow:0 0 40px #ff00ff, 0 0 60px #ff69b4;
+    transform: scale(1.05);
+}
+
+footer { text-align: center; padding: 20px; background-color: #ff69b4; color: white; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE D'ACCUEIL -->
+<section id="home">
+<h1>The Dollzz House</h1>
+<p>Entrez dans le monde magique des poupées</p>
+<a href="#main" id="enterBtn">Entrer</a>
+
+<div class="butterfly" style="top:10%; left:20%; animation-duration:12s;"></div>
+<div class="butterfly" style="top:30%; left:70%; animation-duration:15s;"></div>
+<div class="butterfly" style="top:60%; left:40%; animation-duration:10s;"></div>
+<div class="butterfly" style="top:80%; left:80%; animation-duration:18s;"></div>
+</section>
+
+<!-- SITE PRINCIPAL -->
+<section id="main">
+
+<!-- Papillons site principal -->
+<div class="butterfly-main" style="top:15%; left:10%;"></div>
+<div class="butterfly-main" style="top:50%; left:80%;"></div>
+<div class="butterfly-main" style="top:70%; left:30%;"></div>
+
+<nav>
+    <a href="#gallery">Galerie</a>
+    <a href="#mods">Mods</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section class="gallery" id="gallery">
+    <img src="https://via.placeholder.com/250x350?text=Poup%C3%A9e+1" alt="Poupée 1">
+    <img src="https://via.placeholder.com/250x350?text=Poup%C3%A9e+2" alt="Poupée 2">
+    <img src="https://via.placeholder.com/250x350?text=Poup%C3%A9e+3" alt="Poupée 3">
+    <img src="https://via.placeholder.com/250x350?text=Poup%C3%A9e+4" alt="Poupée 4">
+</section>
+
+<section id="mods">
+<h2>Contenu personnalisé / Mods</h2>
+<p>Explorez nos créations personnalisées pour vos poupées, accessoires et décors uniques.</p>
+<div class="mods-container">
+<div class="mod-card">
+<img src="https://via.placeholder.com/200x250?text=Mod+1" alt="Mod 1">
+<h3>Mod Poupée Élégante</h3>
+<p>Ajoutez des tenues exclusives et accessoires élégants pour votre poupée.</p>
+</div>
+<div class="mod-card">
+<img src="https://via.placeholder.com/200x250?text=Mod+2" alt="Mod 2">
+<h3>Décor de Chambre</h3>
+<p>Transformez la maison de votre poupée avec des décors et meubles personnalisés.</p>
+</div>
+<div class="mod-card">
+<img src="https://via.placeholder.com/200x250?text=Mod+3" alt="Mod 3">
+<h3>Accessoires Exclusifs</h3>
+<p>Des accessoires uniques pour rendre vos poupées vraiment spéciales.</p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contactez-nous</h2>
+<p>Envoyez-nous un message pour toute demande ou commande spéciale.</p>
+
+<!-- Formulaire Formspree -->
+<form action="https://formspree.io/f/mdkpnaby" method="POST" style="max-width:400px; margin:0 auto;">
+    <input type="text" name="name" placeholder="Votre nom" required>
+    <input type="email" name="email" placeholder="Votre email" required>
+    <textarea name="message" placeholder="Votre message" required></textarea>
+    <button type="submit">Envoyer</button>
+</form>
+
+<!-- Bouton pour ouvrir le formulaire dans un nouvel onglet -->
+<p style="text-align:center; margin-top:20px;">
+    <a href="https://formspree.io/f/mdkpnaby" target="_blank" rel="noopener noreferrer" class="external-button">
+       Ouvrir le formulaire
+    </a>
+</p>
+</section>
+
+<footer>&copy; 2025 The Dollzz House. Tous droits réservés.</footer>
+</section>
+
+<script>
+// Fade-in site principal et papillons
+const enterBtn = document.getElementById('enterBtn');
+const main = document.getElementById('main');
+const homeButterflies = document.querySelectorAll('#home .butterfly');
+const mainButterflies = document.querySelectorAll('#main .butterfly-main');
+
+enterBtn.addEventListener('click', () => {
+    homeButterflies.forEach(b => {
+        b.style.transform = 'translateY(-200px)';
+        b.style.opacity = '0';
+    });
+    setTimeout(() => { main.classList.add('visible'); }, 300);
+});
+
+// Déplacement papillons site principal au scroll
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    mainButterflies.forEach((b, i) => {
+        b.style.transform = `translate(${i * 30 + scrollY*0.2}px, ${scrollY*0.1}px) rotate(${scrollY*0.05}deg)`;
+    });
+});
+</script>
+
+</body>
+</html>
